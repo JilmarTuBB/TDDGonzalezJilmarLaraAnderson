@@ -9,11 +9,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 
-public class PanelPin extends javax.swing.JPanel {
+public class LPanelPin extends javax.swing.JPanel {
 
-     private Windows windows;
+     private LoginWindows windows;
     
-    public PanelPin() {
+    public LPanelPin() {
         initComponents();
         this.setVisible(true);
         ActionMouse(pnlNumbers);

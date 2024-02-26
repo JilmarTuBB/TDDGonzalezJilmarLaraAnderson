@@ -2,11 +2,18 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
+import p3tarea3grupo3.controller.Controller;
 
-public class PanelUser extends javax.swing.JPanel {
+public class LPanelUser extends javax.swing.JPanel {
     
-    public PanelUser() {
+    public static String user = "user";
+    public static String password = "password";
+    
+    Controller controller;
+    
+    public LPanelUser() {
         initComponents();
+        controller = new Controller("Account");
         this.lblNotVisible.setVisible(false);
     }
 
@@ -136,7 +143,7 @@ public class PanelUser extends javax.swing.JPanel {
         btnRegister.setRoundBottomRight(50);
         btnRegister.setRoundTopLeft(50);
         btnRegister.setRoundTopRight(50);
-        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 210, 60));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 200, 60));
 
         btnLogin.setBackground(new java.awt.Color(0, 0, 0));
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,7 +153,12 @@ public class PanelUser extends javax.swing.JPanel {
         btnLogin.setRoundBottomRight(50);
         btnLogin.setRoundTopLeft(50);
         btnLogin.setRoundTopRight(50);
-        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 560, 200, 60));
+        btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLoginMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 200, 60));
 
         txtPIN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtPIN.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,6 +182,19 @@ public class PanelUser extends javax.swing.JPanel {
         lblNotVisible.setVisible(false);
         txtPassword.setEchoChar('●');
     }//GEN-LAST:event_lblNotVisibleMouseClicked
+
+    private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        String userText = txtUser.getText();
+        if(controller.verifyUser(user, userText)) {
+            if(controller.verifyUser(password, String.valueOf(txtPassword.getPassword()))) {
+            
+            }else{
+                System.out.println("La contraseña es inorrecta");    
+            }
+        }else{
+            System.out.println("El Usuarion no Existe");
+        }
+    }//GEN-LAST:event_btnLoginMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

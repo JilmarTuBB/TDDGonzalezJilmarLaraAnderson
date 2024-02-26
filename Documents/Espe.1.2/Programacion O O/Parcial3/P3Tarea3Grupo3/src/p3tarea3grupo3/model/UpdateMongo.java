@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package p3tarea3grupo3.controller;
+
+package p3tarea3grupo3.model;
 
 import com.mongodb.client.MongoCollection;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
-/**
- *
- * @author HOME
- */
 public class UpdateMongo {
     MongoCollection<Document> collection;
     

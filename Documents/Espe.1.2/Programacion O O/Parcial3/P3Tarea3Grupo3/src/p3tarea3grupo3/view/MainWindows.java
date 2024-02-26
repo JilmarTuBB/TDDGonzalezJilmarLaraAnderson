@@ -4,17 +4,18 @@ package p3tarea3grupo3.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-public class WindowsMain extends javax.swing.JFrame {
+public class MainWindows extends javax.swing.JFrame {
 
     private int initX, initY;
+    private MPanelOptions options;
     
-    public WindowsMain() {
+    public MainWindows() {
         initComponents();
         
+        options = new MPanelOptions(this);
+        
         this.setLocationRelativeTo(null);
-        //showPanel(new PanelWelcome());
     }
 
     /**
@@ -26,13 +27,12 @@ public class WindowsMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PnlPrueba = new javax.swing.JPanel();
-        pnlActions = new javax.swing.JPanel();
+        PnlActions = new javax.swing.JPanel();
         btnMinimeze = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         lblIcon = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        PnlMain = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
         panelRound1 = new ComponentRoundJilmar.PanelRound();
@@ -44,38 +44,29 @@ public class WindowsMain extends javax.swing.JFrame {
         lblTitleNumberAccount = new javax.swing.JLabel();
         lblNumberAccount = new javax.swing.JLabel();
         lblVisible = new javax.swing.JLabel();
+        PnlContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PnlPrueba.setPreferredSize(new java.awt.Dimension(660, 670));
-
-        javax.swing.GroupLayout PnlPruebaLayout = new javax.swing.GroupLayout(PnlPrueba);
-        PnlPrueba.setLayout(PnlPruebaLayout);
-        PnlPruebaLayout.setHorizontalGroup(
-            PnlPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-        );
-        PnlPruebaLayout.setVerticalGroup(
-            PnlPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PnlPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
-
-        pnlActions.setBackground(new java.awt.Color(0, 0, 0));
-        pnlActions.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        PnlActions.setBackground(new java.awt.Color(0, 0, 0));
+        PnlActions.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                pnlActionsMouseDragged(evt);
+                PnlActionsMouseDragged(evt);
             }
         });
-        pnlActions.addMouseListener(new java.awt.event.MouseAdapter() {
+        PnlActions.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlActionsMouseEntered(evt);
+                PnlActionsMouseEntered(evt);
             }
         });
-        pnlActions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PnlActions.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMinimeze.setBackground(new java.awt.Color(0, 0, 0));
         btnMinimeze.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -94,7 +85,7 @@ public class WindowsMain extends javax.swing.JFrame {
                 btnMinimezeMouseExited(evt);
             }
         });
-        pnlActions.add(btnMinimeze, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 50, 30));
+        PnlActions.add(btnMinimeze, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 0, 50, 30));
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
         btnExit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,29 +104,29 @@ public class WindowsMain extends javax.swing.JFrame {
                 btnExitMouseExited(evt);
             }
         });
-        pnlActions.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, 50, 30));
+        PnlActions.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 0, 50, 30));
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/Icon.png"))); // NOI18N
         lblIcon.setText("jLabel2");
-        pnlActions.add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
+        PnlActions.add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("MayLiJi");
-        pnlActions.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, 30));
+        PnlActions.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 60, 30));
 
-        getContentPane().add(pnlActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 30));
+        getContentPane().add(PnlActions, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PnlMain.setBackground(new java.awt.Color(255, 255, 255));
+        PnlMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/Iconlogo.png"))); // NOI18N
-        jPanel2.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 480, 170));
+        PnlMain.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 480, 170));
 
         lblUser.setFont(new java.awt.Font("Roboto Black", 0, 20)); // NOI18N
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUser.setText("BIENVENIDO/A CAMILA MAYTE PERRAZO GUERRA");
-        jPanel2.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 560, 60));
+        PnlMain.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 560, 60));
 
         panelRound1.setRoundBottomLeft(50);
         panelRound1.setRoundBottomRight(50);
@@ -185,9 +176,24 @@ public class WindowsMain extends javax.swing.JFrame {
         });
         panelRound1.add(lblVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, 30));
 
-        jPanel2.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 490, 120));
+        PnlMain.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 490, 120));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 670));
+        getContentPane().add(PnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 670));
+
+        PnlContainer.setPreferredSize(new java.awt.Dimension(660, 670));
+
+        javax.swing.GroupLayout PnlContainerLayout = new javax.swing.GroupLayout(PnlContainer);
+        PnlContainer.setLayout(PnlContainerLayout);
+        PnlContainerLayout.setHorizontalGroup(
+            PnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 660, Short.MAX_VALUE)
+        );
+        PnlContainerLayout.setVerticalGroup(
+            PnlContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 670, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PnlContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,17 +218,17 @@ public class WindowsMain extends javax.swing.JFrame {
         btnMinimeze.setBackground(Color.black);
     }//GEN-LAST:event_btnMinimezeMouseExited
 
-    private void pnlActionsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlActionsMouseEntered
+    private void PnlActionsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlActionsMouseEntered
         initX = evt.getX();
         initY = evt.getY();
-    }//GEN-LAST:event_pnlActionsMouseEntered
+    }//GEN-LAST:event_PnlActionsMouseEntered
 
-    private void pnlActionsMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlActionsMouseDragged
+    private void PnlActionsMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PnlActionsMouseDragged
         int newX  = getLocation().x + evt.getX() - initX;
         int newY = getLocation().y + evt.getY() - initY;
 
         this.setLocation(newX, newY);
-    }//GEN-LAST:event_pnlActionsMouseDragged
+    }//GEN-LAST:event_PnlActionsMouseDragged
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         System.exit(0);
@@ -235,6 +241,10 @@ public class WindowsMain extends javax.swing.JFrame {
     private void lblNotVisibleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNotVisibleMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblNotVisibleMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        showPanel(options);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -253,14 +263,30 @@ public class WindowsMain extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WindowsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WindowsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WindowsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WindowsMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindows.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -281,17 +307,18 @@ public class WindowsMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WindowsMain().setVisible(true);
+                new MainWindows().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PnlPrueba;
+    private javax.swing.JPanel PnlActions;
+    private javax.swing.JPanel PnlContainer;
+    private javax.swing.JPanel PnlMain;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimeze;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblAvailableBalance;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblLogo;
@@ -304,27 +331,15 @@ public class WindowsMain extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblVisible;
     private ComponentRoundJilmar.PanelRound panelRound1;
-    private javax.swing.JPanel pnlActions;
     // End of variables declaration//GEN-END:variables
 
-    private void showPanel(JPanel p){
+    public void showPanel(JPanel p){
         p.setSize(660, 670);
         p.setLocation(0, 0);       
-        PnlPrueba.removeAll();
-        PnlPrueba.add(p,BorderLayout.CENTER);
-        PnlPrueba.revalidate();
-        PnlPrueba.repaint();
+        PnlContainer.removeAll();
+        PnlContainer.add(p,BorderLayout.CENTER);
+        PnlContainer.revalidate();
+        PnlContainer.repaint();
     }
-
     
-     private Boolean validarJTextOfPanel(JPanel panel) {
-        for (int i = 0; panel.getComponentCount() > i; i++) {
-            if (panel.getComponents()[i] instanceof JTextField) {
-                if (((JTextField) panel.getComponents()[i]).getText().equals("")) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 }

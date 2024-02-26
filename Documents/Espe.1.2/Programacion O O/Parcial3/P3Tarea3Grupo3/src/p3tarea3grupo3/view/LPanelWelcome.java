@@ -3,13 +3,13 @@ package p3tarea3grupo3.view;
 
 import java.awt.Color;
 
-public class PanelWelcome extends javax.swing.JPanel {
+public class LPanelWelcome extends javax.swing.JPanel {
 
-    private Windows windows;
+    private LoginWindows windows;
     
-    public PanelWelcome(Windows windows) {
-        this.windows = windows;
+    public LPanelWelcome(LoginWindows windows) {
         initComponents();
+        this.windows = windows;
         this.setVisible(true);
     }
 
@@ -185,8 +185,8 @@ public class PanelWelcome extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
-        // TODO add your handling code here:
-        
+        RegisterWindows windows = new RegisterWindows();
+        windows.setVisible(true);
     }//GEN-LAST:event_lblRegisterMouseClicked
 
     private void lblRegisterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseExited
@@ -222,11 +222,11 @@ public class PanelWelcome extends javax.swing.JPanel {
     }//GEN-LAST:event_panelLineMouseClicked
 
     private void panelUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelUserMouseClicked
-        windows.showPanel(new PanelUser());
+        windows.showPanel(new LPanelUser());
     }//GEN-LAST:event_panelUserMouseClicked
 
     private void panelPinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPinMouseClicked
-        windows.showPanel(new PanelPin());
+        windows.showPanel(new LPanelPin());
     }//GEN-LAST:event_panelPinMouseClicked
 
 

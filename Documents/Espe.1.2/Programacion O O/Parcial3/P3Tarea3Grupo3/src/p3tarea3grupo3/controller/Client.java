@@ -12,6 +12,7 @@ public class Client {
     private String birthDate;
     private String status;
     private long phone;
+    private String address;
     private String occupation;
     private String email;
     private String nationality;
@@ -23,7 +24,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String lastName, String identification, String code, String birthDate, String status, long phone, String occupation, String email, String nationality, String province, String city, String referenceName, long referencePhone) {
+    public Client(String name, String lastName, String identification, String code, String birthDate, String status, long phone, String address, String occupation, String email, String nationality, String province, String city, String referenceName, long referencePhone) {
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
@@ -31,6 +32,7 @@ public class Client {
         this.birthDate = birthDate;
         this.status = status;
         this.phone = phone;
+        this.address = address;
         this.occupation = occupation;
         this.email = email;
         this.nationality = nationality;
@@ -39,6 +41,7 @@ public class Client {
         this.referenceName = referenceName;
         this.referencePhone = referencePhone;
     }
+
 
     public long getReferencePhone() {
         return referencePhone;
@@ -103,6 +106,14 @@ public class Client {
     public void setPhone(long phone) {
         this.phone = phone;
     }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public String getOccupation() {
         return occupation;
@@ -152,6 +163,8 @@ public class Client {
         this.referenceName = referenceName;
     }
     
+    
+    
     public Document getDocument(Client client){
         Document doc = new Document();
             doc.put("name", client.getName());
@@ -161,6 +174,7 @@ public class Client {
             doc.put("birthDate", client.getBirthDate());
             doc.put("status", client.getStatus());
             doc.put("phone", client.getPhone());
+            doc.put("address", client.getAddress());
             doc.put("occupation", client.getOccupation());
             doc.put("email", client.getEmail());
             doc.put("nationality", client.getNationality());
@@ -180,6 +194,7 @@ public class Client {
             String birthDate = doc.getString("birthDate");
             String status = doc.getString("status");
             long phone = doc.getLong("phone");
+            String address = doc.getString("address");
             String occupation = doc.getString("occupation");
             String email = doc.getString("email");
             String nationality = doc.getString("nationality");
@@ -189,7 +204,8 @@ public class Client {
             long referencePhone = doc.getLong("referencePhone");
 
         return new Client(name, lastName, identification, code, birthDate, status, phone, 
-                          occupation, email, nationality, province, city, referenceName, referencePhone);
+                          address, occupation, email, nationality, province, city, referenceName, referencePhone);
     }
+
   
 }

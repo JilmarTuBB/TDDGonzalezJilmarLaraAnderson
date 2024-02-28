@@ -2,11 +2,22 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import p3tarea3grupo3.controller.Account;
 
 public class MPanelTransfer extends javax.swing.JPanel {
 
+    MainWindows windows;
+    Account account;
+    
     public MPanelTransfer() {
         initComponents();
+    }
+    
+    public MPanelTransfer(MainWindows windows, Account account) {
+        initComponents();
+        this.windows = windows;
+        this.account = account;
     }
 
     /**
@@ -26,10 +37,11 @@ public class MPanelTransfer extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         panelRound2 = new ComponentRoundJilmar.PanelRound();
-        jTextField2 = new javax.swing.JTextField();
+        txtDiner = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         panelRound3 = new ComponentRoundJilmar.PanelRound();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNumberCount = new javax.swing.JTextField();
         panelRound4 = new ComponentRoundJilmar.PanelRound();
         jTextField3 = new javax.swing.JTextField();
         panelRound5 = new ComponentRoundJilmar.PanelRound();
@@ -72,6 +84,11 @@ public class MPanelTransfer extends javax.swing.JPanel {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/nextOne.png"))); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/return.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -103,25 +120,23 @@ public class MPanelTransfer extends javax.swing.JPanel {
         panelRound2.setRoundBottomRight(30);
         panelRound2.setRoundTopLeft(30);
         panelRound2.setRoundTopRight(30);
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField2.setText("$");
-        jTextField2.setBorder(null);
+        txtDiner.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        txtDiner.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDiner.setText("0.00");
+        txtDiner.setBorder(null);
+        txtDiner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDinerActionPerformed(evt);
+            }
+        });
+        panelRound2.add(txtDiner, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 0, 270, 40));
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("$");
+        panelRound2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, 30, 30));
 
         pnlOne.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 380, 40));
 
@@ -131,35 +146,26 @@ public class MPanelTransfer extends javax.swing.JPanel {
         panelRound3.setRoundBottomRight(30);
         panelRound3.setRoundTopLeft(30);
         panelRound3.setRoundTopRight(30);
+        panelRound3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/search.png"))); // NOI18N
-
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
+        panelRound3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 38, 40));
 
-        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
-        panelRound3.setLayout(panelRound3Layout);
-        panelRound3Layout.setHorizontalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        panelRound3Layout.setVerticalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1)
-                .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
+        txtNumberCount.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        txtNumberCount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNumberCount.setBorder(null);
+        txtNumberCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumberCountActionPerformed(evt);
+            }
+        });
+        panelRound3.add(txtNumberCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 0, 270, 40));
 
         pnlOne.add(panelRound3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 380, 40));
 
@@ -296,9 +302,21 @@ public class MPanelTransfer extends javax.swing.JPanel {
        btnConfirmTransfer.repaint();
     }//GEN-LAST:event_btnConfirmTransferMouseExited
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        windows.showPanel(new MPanelOptions(windows, account));
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void txtDinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDinerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtDinerActionPerformed
+
+    private void txtNumberCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumberCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumberCountActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+               serchClient();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -314,8 +332,7 @@ public class MPanelTransfer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbFound;
     private ComponentRoundJilmar.PanelRound panelRound1;
@@ -324,5 +341,24 @@ public class MPanelTransfer extends javax.swing.JPanel {
     private ComponentRoundJilmar.PanelRound panelRound4;
     private ComponentRoundJilmar.PanelRound panelRound5;
     private javax.swing.JPanel pnlOne;
+    private javax.swing.JTextField txtDiner;
+    private javax.swing.JTextField txtNumberCount;
     // End of variables declaration//GEN-END:variables
+
+    private void serchClient() {
+        
+        String numberCount = txtNumberCount.getText();
+        long countNumber = Long.parseLong(numberCount);
+        
+        if(txtNumberCount.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El numero de cuenta no puede estar vacio", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        /*Aqui se validad que exista 10 numeros en la verficacion de la cuenta
+        if(countNumber < 10000000000){
+            
+        }
+*/
+    }
+    
 }

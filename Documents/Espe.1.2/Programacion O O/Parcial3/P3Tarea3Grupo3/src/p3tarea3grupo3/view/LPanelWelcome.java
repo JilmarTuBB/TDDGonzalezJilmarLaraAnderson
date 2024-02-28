@@ -226,7 +226,7 @@ public class LPanelWelcome extends javax.swing.JPanel {
     }//GEN-LAST:event_panelUserMouseClicked
 
     private void panelPinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPinMouseClicked
-        windows.showPanel(new LPanelPin());
+        windows.showPanel(new LPanelPin1());
     }//GEN-LAST:event_panelPinMouseClicked
 
 

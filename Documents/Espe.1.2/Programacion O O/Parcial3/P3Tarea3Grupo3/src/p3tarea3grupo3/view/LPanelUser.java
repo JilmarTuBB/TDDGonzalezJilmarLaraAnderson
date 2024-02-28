@@ -2,19 +2,32 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
-import p3tarea3grupo3.controller.Controller;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import org.bson.Document;
+import p3tarea3grupo3.controller.Account;
+import p3tarea3grupo3.controller.ListClient;
+import p3tarea3grupo3.controller.designpattern.decorater.Authenticate;
+import p3tarea3grupo3.controller.designpattern.decorater.AuthenticateUser;
 
 public class LPanelUser extends javax.swing.JPanel {
     
-    public static String user = "user";
-    public static String password = "password";
-    
-    Controller controller;
+    Authenticate authenticate;
+    ListClient client;
+    List<Account> listAccount;
+    Account userBanck;
     
     public LPanelUser() {
         initComponents();
-        controller = new Controller("Account");
+        
+        authenticate = new AuthenticateUser();
+        client = ListClient.getInstance();
+        listAccount = client.getAccount();
+        
         this.lblNotVisible.setVisible(false);
+        
     }
 
     /**
@@ -143,6 +156,11 @@ public class LPanelUser extends javax.swing.JPanel {
         btnRegister.setRoundBottomRight(50);
         btnRegister.setRoundTopLeft(50);
         btnRegister.setRoundTopRight(50);
+        btnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegisterMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 200, 60));
 
         btnLogin.setBackground(new java.awt.Color(0, 0, 0));
@@ -185,16 +203,29 @@ public class LPanelUser extends javax.swing.JPanel {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         String userText = txtUser.getText();
-        if(controller.verifyUser(user, userText)) {
-            if(controller.verifyUser(password, String.valueOf(txtPassword.getPassword()))) {
-            
-            }else{
-                System.out.println("La contraseña es inorrecta");    
+        String passText = String.valueOf(txtPassword.getPassword());
+        if(authenticate.getAuthenticate(userText, passText)) {
+            for (Account a : listAccount) {
+                if(a.getPassword().equals(passText) && a.getUser().equals(userText)) {
+                    userBanck = a;
+                    break;
+                }
             }
+            MainWindows main = new MainWindows(userBanck);
+            main.setVisible(true);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LPanelUser.this);
+            frame.dispose();
         }else{
-            System.out.println("El Usuarion no Existe");
+            JOptionPane.showMessageDialog(this, "El usuario o contraseño es incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLoginMouseClicked
+
+    private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
+        RegisterWindows register = new RegisterWindows();
+        register.setVisible(true);
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LPanelUser.this);
+        frame.dispose();
+    }//GEN-LAST:event_btnRegisterMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

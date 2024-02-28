@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 public class LoginWindows extends javax.swing.JFrame {
 
     private LPanelWelcome pnlWelcome;
-    
     private int initX, initY;
     
     public LoginWindows() {
@@ -17,6 +16,7 @@ public class LoginWindows extends javax.swing.JFrame {
         pnlWelcome = new LPanelWelcome(this);
         
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -171,7 +171,8 @@ public class LoginWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        showPanel(pnlWelcome);
+       //showPanel(pnlWelcome);
+       showPanel(new LPanelUser());
     }//GEN-LAST:event_formWindowOpened
 
     /**

@@ -2,19 +2,28 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import p3tarea3grupo3.controller.Account;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Deposit;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Transaction;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Transfer;
 
-
-/**
- *
- * @author EFRAIN
- */
 public class MPanelDeposit extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Transfers
-     */
+    MainWindows windows;
+    Account account;
+    Transaction aplication;
     public MPanelDeposit() {
         initComponents();
+    }
+    
+    public MPanelDeposit(MainWindows windows, Account account) {
+        initComponents();
+        this.windows = windows;
+        this.account = account;
+        aplication = new Deposit();
     }
 
     /**
@@ -34,7 +43,8 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelRound2 = new ComponentRoundJilmar.PanelRound();
-        jTextField2 = new javax.swing.JTextField();
+        txtDiner = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         panelRound4 = new ComponentRoundJilmar.PanelRound();
         jTextField3 = new javax.swing.JTextField();
         panelRound5 = new ComponentRoundJilmar.PanelRound();
@@ -43,7 +53,6 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btnConfirmTransfer = new ComponentRoundJilmar.PanelRound();
         jLabel12 = new javax.swing.JLabel();
-        lbFound = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,8 +85,8 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel2.setText("Depósitos");
         panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 281, 54));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/return.png"))); // NOI18N
-        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(604, 0, -1, 60));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/return.png"))); // NOI18N
+        panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, 60));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/nextOne.png"))); // NOI18N
@@ -91,27 +100,23 @@ public class MPanelDeposit extends javax.swing.JPanel {
         panelRound2.setRoundBottomRight(30);
         panelRound2.setRoundTopLeft(30);
         panelRound2.setRoundTopRight(30);
+        panelRound2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jTextField2.setText("$");
-        jTextField2.setBorder(null);
+        txtDiner.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        txtDiner.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDiner.setText("0.00");
+        txtDiner.setBorder(null);
+        txtDiner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDinerActionPerformed(evt);
+            }
+        });
+        panelRound2.add(txtDiner, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 13, 290, 44));
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("$");
+        panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 27, 27));
 
         pnlOne.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 390, 70));
 
@@ -135,13 +140,13 @@ public class MPanelDeposit extends javax.swing.JPanel {
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField3)
+                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 380, 40));
+        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 380, 50));
 
         panelRound5.setBackground(new Color(255, 255, 255, 123));
         panelRound5.setRoundBottomLeft(30);
@@ -208,6 +213,11 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Confirmar Depósito");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnConfirmTransferLayout = new javax.swing.GroupLayout(btnConfirmTransfer);
         btnConfirmTransfer.setLayout(btnConfirmTransferLayout);
@@ -224,9 +234,6 @@ public class MPanelDeposit extends javax.swing.JPanel {
         );
 
         pnlOne.add(btnConfirmTransfer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 580, 190, 40));
-
-        lbFound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/found.png"))); // NOI18N
-        pnlOne.add(lbFound, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 500));
 
         add(pnlOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 670));
 
@@ -247,6 +254,19 @@ public class MPanelDeposit extends javax.swing.JPanel {
        btnConfirmTransfer.repaint();
     }//GEN-LAST:event_btnConfirmTransferMouseExited
 
+    private void txtDinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDinerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDinerActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        double diner = Double.parseDouble(txtDiner.getText());
+        if(txtDiner.getText().isEmpty() || diner == 0.0) {
+            JOptionPane.showMessageDialog(null, "No puedes depositar $0.0 dolares");
+            return;
+        }
+        deposit();    
+    }//GEN-LAST:event_jLabel12MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ComponentRoundJilmar.PanelRound btnConfirmTransfer;
@@ -255,18 +275,32 @@ public class MPanelDeposit extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel lbFound;
     private ComponentRoundJilmar.PanelRound panelRound1;
     private ComponentRoundJilmar.PanelRound panelRound2;
     private ComponentRoundJilmar.PanelRound panelRound4;
     private ComponentRoundJilmar.PanelRound panelRound5;
     private javax.swing.JPanel pnlOne;
+    private javax.swing.JTextField txtDiner;
     // End of variables declaration//GEN-END:variables
+
+    private void deposit() {
+        double diner = Double.parseDouble(txtDiner.getText());
+        if(diner < 5 || diner > 500) {
+            JOptionPane.showMessageDialog(null, "El monto a depositar no es permitido", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        account.setBalance(diner);    
+        aplication.applicationn(account);
+        windows.setDates();
+        windows.showPanel(new MPanelOptions(windows,account));
+        
+    }
+        
 }

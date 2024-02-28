@@ -4,6 +4,7 @@
  */
 package p3tarea3grupo3.model;
 
+import p3tarea3grupo3.controller.designpattern.singleton.ConnectionMongo;
 import p3tarea3grupo3.controller.*;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
@@ -19,8 +20,8 @@ public class DeleteMongo {
         
     }
     
-    public void deleteDocument(Document d, String nameCollection){
-        ConnectionMongo connection  = ConnectionMongo.connect(nameCollection);
+    public void deleteDocument(Document d){
+        ConnectionMongo connection  = ConnectionMongo.connect();
         collection = connection.getCollection();
         collection.deleteOne(d);
     }

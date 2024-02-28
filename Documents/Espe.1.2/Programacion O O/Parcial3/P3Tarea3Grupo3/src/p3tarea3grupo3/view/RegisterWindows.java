@@ -7,19 +7,33 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import p3tarea3grupo3.controller.Client;
+import p3tarea3grupo3.controller.designpattern.adapter.Adapter;
+import p3tarea3grupo3.controller.designpattern.adapter.NumKeyEvent;
+import p3tarea3grupo3.controller.designpattern.adapter.TextKeyEvent;
+import p3tarea3grupo3.controller.designpattern.adapter.TextKeyTyped;
+import p3tarea3grupo3.model.Json;
 
 public class RegisterWindows extends javax.swing.JFrame {
     
+    //Prueba envent
+    TextKeyTyped eventText;
+    TextKeyTyped eventNum;
+    Client client;
+    
     ValidateData validate;
     ValidateDataComboBox validateCombo;
-    KeyboardEvents event;
     private int initX, initY;
     
     public RegisterWindows() {
         initComponents();
+        
+        //Prueba event
+        eventText = new TextKeyEvent("text");
+        eventNum = new Adapter(new NumKeyEvent());
+        
         validate = new ValidateData();
         validateCombo = new ValidateDataComboBox();
-        event = new KeyboardEvents();
         
         this.setLocationRelativeTo(null);
     }
@@ -61,7 +75,7 @@ public class RegisterWindows extends javax.swing.JFrame {
         CalendarDateOfBirth = new com.toedter.calendar.JDateChooser();
         txtPhone = new javax.swing.JTextField();
         cmbStatus = new javax.swing.JComboBox<>();
-        txtHomeAddres = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         cmbOccupation = new javax.swing.JComboBox<>();
         txtMail = new javax.swing.JTextField();
         txtNationality = new javax.swing.JTextField();
@@ -301,14 +315,14 @@ public class RegisterWindows extends javax.swing.JFrame {
         cmbStatus.setPreferredSize(new java.awt.Dimension(350, 30));
         PanelRegister.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
 
-        txtHomeAddres.setBorder(null);
-        txtHomeAddres.setPreferredSize(new java.awt.Dimension(330, 30));
-        txtHomeAddres.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAddress.setBorder(null);
+        txtAddress.setPreferredSize(new java.awt.Dimension(330, 30));
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHomeAddresKeyTyped(evt);
+                txtAddressKeyTyped(evt);
             }
         });
-        PanelRegister.add(txtHomeAddres, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
+        PanelRegister.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
 
         cmbOccupation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Estudiante", "Maestro(a) / Profesor(a)", "Médico(a)", "Ingeniero(a)", "Abogado(a)", "Arquitecto(a)", "Contador(a)", "Empresario(a)", "Artista", "Músico(a)", "Actor / Actriz", "Escritor(a)", "Fotógrafo(a)", "Diseñador(a) gráfico(a)", "Programador(a)", "Chef / Cocinero(a)", "Agricultor(a)", "Artesano(a)", "Jardinero(a)", "Peluquero(a) / Estilista", "Bombero(a)", "Policía", "Paramédico(a)", "Enfermero(a)", "Psicólogo(a)", "Terapeuta", "Consultor(a)", "Investigador(a)", "Veterinario(a)", "Voluntario(a)" }));
         cmbOccupation.setBorder(null);
@@ -410,7 +424,7 @@ public class RegisterWindows extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        PanelRegister.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, 120, 30));
+        PanelRegister.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 620, 120, 30));
 
         btnRegister.setBackground(new java.awt.Color(131, 65, 255));
         btnRegister.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -432,16 +446,21 @@ public class RegisterWindows extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Registrarse");
+        jLabel18.setText("Siguiente");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnRegisterLayout = new javax.swing.GroupLayout(btnRegister);
         btnRegister.setLayout(btnRegisterLayout);
         btnRegisterLayout.setHorizontalGroup(
             btnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnRegisterLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+            .addGroup(btnRegisterLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel18)
-                .addGap(19, 19, 19))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         btnRegisterLayout.setVerticalGroup(
             btnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,7 +469,7 @@ public class RegisterWindows extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        PanelRegister.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 610, -1, 30));
+        PanelRegister.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 620, -1, 30));
 
         btnGoBack.setBackground(new java.awt.Color(131, 65, 255));
         btnGoBack.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -487,7 +506,7 @@ public class RegisterWindows extends javax.swing.JFrame {
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
-        PanelRegister.add(btnGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 610, -1, 30));
+        PanelRegister.add(btnGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, -1, 30));
 
         getContentPane().add(PanelRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, 670));
 
@@ -788,46 +807,58 @@ public class RegisterWindows extends javax.swing.JFrame {
     private void btnRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseClicked
         if(!validate.validateField(PanelRegister) || !validateCombo.validateField(PanelRegister)) {
             JOptionPane.showMessageDialog(this, "Existen Campos Vacios","CAUTION",JOptionPane.INFORMATION_MESSAGE);
-        }else {
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(this, "Tus datos son correctos","INFORMATION",JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION){
             saveInformation();
+            RegisterAccount account = new RegisterAccount(client);
+            account.setVisible(true);
+            this.dispose();
+        }else if(confirm == JOptionPane.NO_OPTION) {
+            return;
         }
     }//GEN-LAST:event_btnRegisterMouseClicked
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
-        event.textSpaceKeyPress(evt);
+        eventText.textSpaceKeyPress(evt);
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
-        event.textSpaceKeyPress(evt);
+        eventText.textSpaceKeyPress(evt);
     }//GEN-LAST:event_txtLastNameKeyTyped
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
-        event.dateNum(txtID.getText(), evt);
+        eventNum.textKeyPress(evt);
     }//GEN-LAST:event_txtIDKeyTyped
 
     private void txtCodeFingerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodeFingerKeyTyped
-        event.textAndNumber(evt);
+        eventNum.textSpaceKeyPress(evt);
     }//GEN-LAST:event_txtCodeFingerKeyTyped
 
     private void txtPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneKeyTyped
-        event.dateNum(txtPhone.getText(), evt);
+        eventNum.textKeyPress(evt);
     }//GEN-LAST:event_txtPhoneKeyTyped
 
-    private void txtHomeAddresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHomeAddresKeyTyped
-        event.textAndNumber(evt);
-    }//GEN-LAST:event_txtHomeAddresKeyTyped
+    private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
+        eventNum.textSpaceKeyPress(evt);
+    }//GEN-LAST:event_txtAddressKeyTyped
 
     private void txtNationalityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNationalityKeyTyped
-        event.textKeyPress(evt);
+        eventText.textKeyPress(evt);
     }//GEN-LAST:event_txtNationalityKeyTyped
 
     private void txtReferenceNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReferenceNameKeyTyped
-        event.textSpaceKeyPress(evt);
+        eventText.textSpaceKeyPress(evt);
     }//GEN-LAST:event_txtReferenceNameKeyTyped
 
     private void txtReferencePhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReferencePhoneKeyTyped
-        event.dateNum(txtReferencePhone.getText(), evt); 
+        eventNum.textKeyPress(evt);
     }//GEN-LAST:event_txtReferencePhoneKeyTyped
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseClicked
 
     /**
      * @param args the command line arguments
@@ -919,8 +950,8 @@ public class RegisterWindows extends javax.swing.JFrame {
     private ComponentRoundJilmar.PanelRound panelRound2;
     private ComponentRoundJilmar.PanelRound panelRound6;
     private ComponentRoundJilmar.PanelRound panelRound9;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCodeFinger;
-    private javax.swing.JTextField txtHomeAddres;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtMail;
@@ -933,6 +964,7 @@ public class RegisterWindows extends javax.swing.JFrame {
 
     public void saveInformation() {
        
+        System.out.println(" Entro a Guardar lso datso");
         String name = txtName.getText();
         String lastName = txtLastName.getText();
         String identification = txtID.getText();
@@ -940,6 +972,7 @@ public class RegisterWindows extends javax.swing.JFrame {
         String birthDate = CalendarDateOfBirth.getToolTipText();
         String status = (String) cmbStatus.getSelectedItem();
         long phone = Long.parseLong(txtPhone.getText());
+        String address = txtAddress.getText();
         String occupation = (String) cmbOccupation.getSelectedItem();
         String email = txtMail.getText();
         String nationality = txtNationality.getText();
@@ -948,6 +981,14 @@ public class RegisterWindows extends javax.swing.JFrame {
         String referenceName = txtReferenceName.getText();
         long referencePhone = Long.parseLong(txtReferencePhone.getText());
         
+        client = new Client(name, lastName, identification, code, birthDate, status, phone,
+                address, occupation, email, nationality, province, city, referenceName, referencePhone);
+                
+        /*Json register = new Json();
+        register.setClient(client);*/
+       
     }
+    
+    
     
 }

@@ -1,23 +1,21 @@
 
 package p3tarea3grupo3.model;
 
+import p3tarea3grupo3.controller.designpattern.singleton.ConnectionMongo;
 import com.mongodb.client.MongoCollection;
-import javax.swing.JOptionPane;
 import org.bson.Document;
 
 public class UpdateMongo {
+   
     MongoCollection<Document> collection;
     
-    public UpdateMongo(){
-        
+    public UpdateMongo(){        
     }
     
-    public void modifyDocument(String nameCollection, Document before, Document end){
-        ConnectionMongo connection = ConnectionMongo.connect(nameCollection);
-        collection = connection.getCollection();
-        
+    public void updateDocument(Document before, Document end){
+        ConnectionMongo connection = ConnectionMongo.connect();
+        collection = connection.getCollection();   
         Document update = new Document("$set", new Document(end));
-        collection.updateOne(before, update);
-        JOptionPane.showMessageDialog(null,"Datos actualizados");
+        collection.updateOne(before, update);       
     }
 }

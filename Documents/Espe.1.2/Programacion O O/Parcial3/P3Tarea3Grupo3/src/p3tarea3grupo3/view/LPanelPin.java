@@ -6,15 +6,19 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import p3tarea3grupo3.controller.designpattern.decorater.Authenticate;
 
 
 public class LPanelPin extends javax.swing.JPanel {
 
-     private LoginWindows windows;
+    private LoginWindows windows;
+    Authenticate authenticate;
     
     public LPanelPin() {
         initComponents();
+        
         this.setVisible(true);
         ActionMouse(pnlNumbers);
     }
@@ -30,7 +34,7 @@ public class LPanelPin extends javax.swing.JPanel {
 
         pnlWallpaper = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPin = new javax.swing.JPasswordField();
         pnlNumbers = new javax.swing.JPanel();
         num5 = new ComponentRoundJilmar.LabelRound();
         num1 = new ComponentRoundJilmar.LabelRound();
@@ -57,12 +61,12 @@ public class LPanelPin extends javax.swing.JPanel {
         jLabel1.setText("Banca Virtual");
         pnlWallpaper.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 240, 60));
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setText("175259");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setOpaque(false);
-        pnlWallpaper.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 250, 90));
+        txtPin.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        txtPin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPin.setText("175259");
+        txtPin.setBorder(null);
+        txtPin.setOpaque(false);
+        pnlWallpaper.add(txtPin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 250, 90));
 
         pnlNumbers.setOpaque(false);
         pnlNumbers.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,6 +89,11 @@ public class LPanelPin extends javax.swing.JPanel {
         num1.setRoundBottomRight(70);
         num1.setRoundTopLeft(70);
         num1.setRoundTopRight(70);
+        num1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                num1MouseClicked(evt);
+            }
+        });
         pnlNumbers.add(num1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 70, 70));
 
         num2.setBackground(new java.awt.Color(255, 255, 255));
@@ -186,6 +195,9 @@ public class LPanelPin extends javax.swing.JPanel {
         btnEnter.setRoundTopLeft(40);
         btnEnter.setRoundTopRight(40);
         btnEnter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnterMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEnterMouseEntered(evt);
             }
@@ -231,11 +243,23 @@ public class LPanelPin extends javax.swing.JPanel {
         lblPin.setForeground(Color.black);
     }//GEN-LAST:event_lblPinMouseExited
 
+    private void btnEnterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnterMouseClicked
+        String pin = String.valueOf(txtPin.getPassword());
+        if(authenticate.getAuthenticate(pin, pin)) {
+            System.out.println("Existe");
+        }else{
+            JOptionPane.showMessageDialog(this, "Pin Incorrecto", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEnterMouseClicked
+
+    private void num1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_num1MouseClicked
+        //if(String.valueOf(txtPin.getPassword())
+    }//GEN-LAST:event_num1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ComponentRoundJilmar.LabelRound btnEnter;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private ComponentRoundJilmar.LabelRound labelRound12;
     private javax.swing.JLabel lblPin;
     private javax.swing.JLabel lblWallpaper;
@@ -251,6 +275,7 @@ public class LPanelPin extends javax.swing.JPanel {
     private ComponentRoundJilmar.LabelRound num9;
     private javax.swing.JPanel pnlNumbers;
     private javax.swing.JPanel pnlWallpaper;
+    private javax.swing.JPasswordField txtPin;
     // End of variables declaration//GEN-END:variables
 
     

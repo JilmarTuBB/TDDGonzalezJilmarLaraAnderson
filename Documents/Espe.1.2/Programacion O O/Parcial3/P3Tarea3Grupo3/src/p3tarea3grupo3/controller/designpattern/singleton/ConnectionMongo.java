@@ -1,5 +1,5 @@
 
-package p3tarea3grupo3.model;
+package p3tarea3grupo3.controller.designpattern.singleton;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
@@ -17,13 +17,13 @@ public class ConnectionMongo {
     String server = "localhost";
     int puerto = 27017;
     
-    private ConnectionMongo(String nameCollection){
+    private ConnectionMongo(){
        this.mongo = createConnection();
        this.dataBase = mongo.getDatabase("P3Tarea3Grupo3");
-       this.collection = dataBase.getCollection(nameCollection);
+       this.collection = dataBase.getCollection("Account");
     }
     
-    public MongoClient createConnection(){
+    private MongoClient createConnection(){
         try{
             mongo = new MongoClient(server, puerto);
         }catch(MongoException e){
@@ -32,9 +32,9 @@ public class ConnectionMongo {
         return mongo;
     }
 
-    public static ConnectionMongo connect(String nameCollection){
+    public static ConnectionMongo connect(){
         if(connection == null){
-            connection = new ConnectionMongo(nameCollection);    
+            connection = new ConnectionMongo();    
         }
         return connection;
     }

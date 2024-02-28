@@ -5,15 +5,26 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import p3tarea3grupo3.controller.Account;
 
 public class MPanelOptions extends javax.swing.JPanel {
 
     MainWindows windows;
+    Account account;
     
-    public MPanelOptions(MainWindows windows) {
+    public MPanelOptions(MainWindows windows, Account account) {
         initComponents();
+        System.out.println("Entro en Optiones " + account.getTitular());
         this.windows = windows;
+        this.account = account;
     }
+    
+    /*public MPanelOptions( ) {
+        initComponents();
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +51,7 @@ public class MPanelOptions extends javax.swing.JPanel {
         btnTransfer = new ComponentRoundJilmar.PanelRound();
         lblIconTransfer = new javax.swing.JLabel();
         lblTitleTransfer = new javax.swing.JLabel();
+        labelRound1 = new ComponentRoundJilmar.LabelRound();
         lblWallpaper = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,6 +94,9 @@ public class MPanelOptions extends javax.swing.JPanel {
         btnDeposit.setRoundTopLeft(50);
         btnDeposit.setRoundTopRight(50);
         btnDeposit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDepositMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnDepositMouseEntered(evt);
             }
@@ -193,6 +208,25 @@ public class MPanelOptions extends javax.swing.JPanel {
 
         jPanel1.add(btnTransfer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 170, 130));
 
+        labelRound1.setBackground(new java.awt.Color(51, 51, 255));
+        labelRound1.setForeground(new java.awt.Color(255, 255, 255));
+        labelRound1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelRound1.setText("Cerrar Sesion");
+        labelRound1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelRound1.setRoundBottomLeft(30);
+        labelRound1.setRoundBottomRight(30);
+        labelRound1.setRoundTopLeft(30);
+        labelRound1.setRoundTopRight(30);
+        labelRound1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelRound1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labelRound1MouseEntered(evt);
+            }
+        });
+        jPanel1.add(labelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 100, 30));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 670));
 
         lblWallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/wallpaper.png"))); // NOI18N
@@ -250,15 +284,36 @@ public class MPanelOptions extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQueryMovementsMouseExited
 
     private void btnTransferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTransferMouseClicked
-        windows.showPanel(new MPanelTransfer());
+        windows.showPanel(new MPanelTransfer(windows, account));
     }//GEN-LAST:event_btnTransferMouseClicked
 
     private void btnWithDrawalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWithDrawalMouseClicked
+        windows.showPanel(new Retreat(windows, account));
     }//GEN-LAST:event_btnWithDrawalMouseClicked
 
     private void btnQueryMovementsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQueryMovementsMouseClicked
         windows.showPanel(new MPanelRecord());
     }//GEN-LAST:event_btnQueryMovementsMouseClicked
+
+    private void btnDepositMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDepositMouseClicked
+        windows.showPanel(new MPanelDeposit(windows, account));
+    }//GEN-LAST:event_btnDepositMouseClicked
+
+    private void labelRound1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRound1MouseEntered
+        
+    }//GEN-LAST:event_labelRound1MouseEntered
+
+    private void labelRound1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRound1MouseClicked
+        int confirm = JOptionPane.showConfirmDialog(this, "Estan seguro que quieres salir","INFORMATION",JOptionPane.YES_NO_OPTION);
+        if(confirm == JOptionPane.YES_OPTION){
+            LoginWindows login = new LoginWindows();
+            login.setVisible(true);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(MPanelOptions.this);
+            frame.dispose();
+        }else if(confirm == JOptionPane.NO_OPTION) {
+            return;
+        }
+    }//GEN-LAST:event_labelRound1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -268,6 +323,7 @@ public class MPanelOptions extends javax.swing.JPanel {
     private ComponentRoundJilmar.PanelRound btnUpdataData;
     private ComponentRoundJilmar.PanelRound btnWithDrawal;
     private javax.swing.JPanel jPanel1;
+    private ComponentRoundJilmar.LabelRound labelRound1;
     private javax.swing.JLabel lblIconDeposit;
     private javax.swing.JLabel lblIconQueryMovements;
     private javax.swing.JLabel lblIconTransfer;

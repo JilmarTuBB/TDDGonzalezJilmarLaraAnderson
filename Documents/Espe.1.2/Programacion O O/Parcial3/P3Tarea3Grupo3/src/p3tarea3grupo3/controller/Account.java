@@ -3,18 +3,18 @@ package p3tarea3grupo3.controller;
 
 import org.bson.Document;
 
-public abstract class Account implements CreateAccount {
+public class Account implements CreateAccount {
     
     private int id;
     private String accountNumber;
     private String titular;
     private String user;
     private String password;
-    private int pin;
+    private String pin;
     private double balance;
     private Client client;
 
-    public Account(int id, String accountNumber, String titular, String user, String password, int pin, double balance, Client client) {
+    public Account(int id, String accountNumber, String titular, String user, String password, String pin, double balance, Client client) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.titular = titular;
@@ -30,26 +30,29 @@ public abstract class Account implements CreateAccount {
 
     @Override
     public Document getDocument(Account account) {
+        Client cli = new Client();
         Document document = new Document();
             document.put("id", account.getId());
             document.put("accountNumber", account.getAccountNumber());
             document.put("titular", account.getTitular());
             document.put("user", account.getUser());
             document.put("password", account.getPassword());
+            document.put("pin", account.getPin());
             document.put("balance", account.getBalance());
-            document.put("client", client.getDocument(account.getClient()));
+            document.put("client", cli.getDocument(account.getClient()));
             
         return document;
     }
 
     @Override
      public Account getObject(Document doc) {
+        Client client = new Client();
         int id = doc.getInteger("id");
         String accountNumber = doc.getString("accountNumber");
         String titular = doc.getString("titular");
         String user = doc.getString("user");
         String password = doc.getString("password");
-        int pin = doc.getInteger("pin");
+        String pin = doc.getString("pin");
         double balance = doc.getDouble("balance");
         Client c = client.getObject((Document) doc.get("client"));
 
@@ -96,11 +99,11 @@ public abstract class Account implements CreateAccount {
         this.password = password;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 

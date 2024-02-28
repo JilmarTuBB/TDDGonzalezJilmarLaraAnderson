@@ -1,8 +1,10 @@
 
 package p3tarea3grupo3.model;
 
+import p3tarea3grupo3.controller.designpattern.singleton.ConnectionMongo;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
 
@@ -14,9 +16,11 @@ public class ReadMongo {
     Document document;
     
     
-    public ReadMongo(String nameCollection){        
-        this.connection = ConnectionMongo.connect(nameCollection);
+    public ReadMongo(){        
+        this.connection = ConnectionMongo.connect();
         this.collection = connection.getCollection();
+        this.listDocument = new ArrayList();
+        
     }
     
     public List<Document> readDocument() {

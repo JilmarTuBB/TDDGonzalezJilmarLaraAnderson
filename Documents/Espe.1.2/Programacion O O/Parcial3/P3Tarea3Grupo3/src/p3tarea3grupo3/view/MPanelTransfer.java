@@ -2,13 +2,23 @@
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JOptionPane;
 import p3tarea3grupo3.controller.Account;
+import p3tarea3grupo3.controller.ListClient;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Transaction;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Transfer;
+import p3tarea3grupo3.controller.designpattern.factorymethod.Withdrawal;
 
 public class MPanelTransfer extends javax.swing.JPanel {
 
+    Transaction aplication;
+    Transaction subtract;
+   
     MainWindows windows;
     Account account;
+    Account searchAccount;
+    ListClient client;
     
     public MPanelTransfer() {
         initComponents();
@@ -18,6 +28,10 @@ public class MPanelTransfer extends javax.swing.JPanel {
         initComponents();
         this.windows = windows;
         this.account = account;
+        aplication = new Transfer();
+        subtract = new Withdrawal();
+        //Singleton
+        client = ListClient.getInstance();
     }
 
     /**
@@ -45,9 +59,10 @@ public class MPanelTransfer extends javax.swing.JPanel {
         panelRound4 = new ComponentRoundJilmar.PanelRound();
         jTextField3 = new javax.swing.JTextField();
         panelRound5 = new ComponentRoundJilmar.PanelRound();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblNumberAccount = new javax.swing.JLabel();
+        lblDestinationn = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         btnConfirmTransfer = new ComponentRoundJilmar.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,7 +83,7 @@ public class MPanelTransfer extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingrese un comentario");
-        pnlOne.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+        pnlOne.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, -1, -1));
 
         panelRound1.setBackground(new Color(255, 255, 255, 123));
         panelRound1.setRoundBottomLeft(30);
@@ -175,72 +190,43 @@ public class MPanelTransfer extends javax.swing.JPanel {
         panelRound4.setRoundBottomRight(30);
         panelRound4.setRoundTopLeft(30);
         panelRound4.setRoundTopRight(30);
+        panelRound4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField3.setBorder(null);
+        panelRound4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 0, 300, 40));
 
-        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
-        panelRound4.setLayout(panelRound4Layout);
-        panelRound4Layout.setHorizontalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelRound4Layout.setVerticalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField3)
-                .addContainerGap())
-        );
-
-        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 380, 40));
+        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 380, 40));
 
         panelRound5.setBackground(new Color(255, 255, 255, 123));
         panelRound5.setRoundBottomLeft(30);
         panelRound5.setRoundBottomRight(30);
         panelRound5.setRoundTopLeft(30);
         panelRound5.setRoundTopRight(30);
+        panelRound5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nro. 2200440110 ");
+        lblNumberAccount.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNumberAccount.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumberAccount.setText("2200440110 ");
+        panelRound5.add(lblNumberAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 71, -1, -1));
 
-        jLabel7.setBackground(new java.awt.Color(51, 0, 153));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 0, 153));
-        jLabel7.setText("CAMILA MAYTHE PERRAZO GUERRA");
+        lblDestinationn.setBackground(new java.awt.Color(51, 0, 153));
+        lblDestinationn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDestinationn.setForeground(new java.awt.Color(51, 0, 153));
+        lblDestinationn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDestinationn.setText("Usuario");
+        panelRound5.add(lblDestinationn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 35, 350, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Para");
+        panelRound5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
-        panelRound5.setLayout(panelRound5Layout);
-        panelRound5Layout.setHorizontalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelRound5Layout.setVerticalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Nro. ");
+        panelRound5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 71, -1, -1));
 
-        pnlOne.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 380, -1));
+        pnlOne.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 380, 110));
 
         btnConfirmTransfer.setBackground(new java.awt.Color(51, 0, 102));
         btnConfirmTransfer.setPreferredSize(new java.awt.Dimension(100, 54));
@@ -249,6 +235,9 @@ public class MPanelTransfer extends javax.swing.JPanel {
         btnConfirmTransfer.setRoundTopLeft(30);
         btnConfirmTransfer.setRoundTopRight(30);
         btnConfirmTransfer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConfirmTransferMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnConfirmTransferMouseEntered(evt);
             }
@@ -315,8 +304,12 @@ public class MPanelTransfer extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNumberCountActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-               serchClient();
+        serchClient();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btnConfirmTransferMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmTransferMouseClicked
+        tranfer();
+    }//GEN-LAST:event_btnConfirmTransferMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -329,12 +322,13 @@ public class MPanelTransfer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbFound;
+    private javax.swing.JLabel lblDestinationn;
+    private javax.swing.JLabel lblNumberAccount;
     private ComponentRoundJilmar.PanelRound panelRound1;
     private ComponentRoundJilmar.PanelRound panelRound2;
     private ComponentRoundJilmar.PanelRound panelRound3;
@@ -345,20 +339,55 @@ public class MPanelTransfer extends javax.swing.JPanel {
     private javax.swing.JTextField txtNumberCount;
     // End of variables declaration//GEN-END:variables
 
-    private void serchClient() {
+    private void serchClient() {       
+        String numberClient = txtNumberCount.getText();
+        List<Account> account = client.getAccount();
+        boolean value = false;
+        for (Account a : account) {         
+            if(a.getAccountNumber().equals(numberClient)) {
+                searchAccount = a;
+                lblDestinationn.setText(searchAccount.getTitular());
+                lblNumberAccount.setText(searchAccount.getAccountNumber());
+                value = true;
+                break;
+            }
+        }
         
+        if(!value) {
+            JOptionPane.showMessageDialog(this, "No se encontró ningún usuario con el número de cuenta proporcionado.", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+            lblDestinationn.setText("Usuario no Existe");
+            lblNumberAccount.setText("----------");
+        }
+       
+    }
+    
+    public void tranfer() {
         String numberCount = txtNumberCount.getText();
-        long countNumber = Long.parseLong(numberCount);
-        
-        if(txtNumberCount.getText().isEmpty()){
+        String nameDestination = lblDestinationn.getText();
+        Double balance = account.getBalance();
+        Double newBalance = Double.parseDouble(txtDiner.getText());
+    
+        if(txtNumberCount.getText().isEmpty() || nameDestination.equals("Usuario no Existe") || nameDestination.equals("Usuario no Existe")){
             JOptionPane.showMessageDialog(null, "El numero de cuenta no puede estar vacio", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        /*Aqui se validad que exista 10 numeros en la verficacion de la cuenta
-        if(countNumber < 10000000000){
-            
-        }
-*/
+        
+        Double total = balance - newBalance;
+        
+        //Valor a transferir
+        searchAccount.setBalance(newBalance);       
+        aplication.applicationn(searchAccount);
+        
+        //Valor a restar de la cuenta actual
+        account.setBalance(total);
+        subtract.applicationn(account);
+        
+        windows.setDates();
+        windows.showPanel(new MPanelOptions(windows,account));
+        
     }
+
+    
+       
     
 }

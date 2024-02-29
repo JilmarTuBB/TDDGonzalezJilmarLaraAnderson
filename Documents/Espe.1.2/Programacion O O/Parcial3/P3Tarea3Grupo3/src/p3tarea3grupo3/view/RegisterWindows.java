@@ -1,17 +1,24 @@
 
 package p3tarea3grupo3.view;
 
+import p3tarea3grupo3.controller.designpattern.strategy.CleanTextField;
+import p3tarea3grupo3.controller.designpattern.strategy.CleanComponent;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import p3tarea3grupo3.controller.City;
 import p3tarea3grupo3.controller.Client;
+import p3tarea3grupo3.controller.Provinces;
 import p3tarea3grupo3.controller.designpattern.adapter.Adapter;
 import p3tarea3grupo3.controller.designpattern.adapter.NumKeyEvent;
 import p3tarea3grupo3.controller.designpattern.adapter.TextKeyEvent;
 import p3tarea3grupo3.controller.designpattern.adapter.TextKeyTyped;
+import p3tarea3grupo3.controller.designpattern.strategy.Clean;
+import p3tarea3grupo3.controller.designpattern.strategy.CleanComboBox;
 import p3tarea3grupo3.model.Json;
 
 public class RegisterWindows extends javax.swing.JFrame {
@@ -20,6 +27,11 @@ public class RegisterWindows extends javax.swing.JFrame {
     TextKeyTyped eventText;
     TextKeyTyped eventNum;
     Client client;
+    
+    
+    //Patron de diseno strategy
+    Clean clean;
+    Clean cleanTwo;
     
     ValidateData validate;
     ValidateDataComboBox validateCombo;
@@ -32,8 +44,15 @@ public class RegisterWindows extends javax.swing.JFrame {
         eventText = new TextKeyEvent("text");
         eventNum = new Adapter(new NumKeyEvent());
         
+        //Patron de diseno strategy 
         validate = new ValidateData();
         validateCombo = new ValidateDataComboBox();
+        clean = new Clean(new CleanTextField());
+        cleanTwo = new Clean(new CleanComboBox());
+        
+        //Ficheros desde Csv
+        setCities();
+        setProvinces();
         
         this.setLocationRelativeTo(null);
     }
@@ -396,6 +415,9 @@ public class RegisterWindows extends javax.swing.JFrame {
         btnClear.setRoundTopLeft(20);
         btnClear.setRoundTopRight(20);
         btnClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnClearMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnClearMouseEntered(evt);
             }
@@ -447,11 +469,6 @@ public class RegisterWindows extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Siguiente");
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout btnRegisterLayout = new javax.swing.GroupLayout(btnRegister);
         btnRegister.setLayout(btnRegisterLayout);
@@ -478,6 +495,9 @@ public class RegisterWindows extends javax.swing.JFrame {
         btnGoBack.setRoundTopLeft(20);
         btnGoBack.setRoundTopRight(20);
         btnGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGoBackMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnGoBackMouseEntered(evt);
             }
@@ -856,9 +876,16 @@ public class RegisterWindows extends javax.swing.JFrame {
         eventNum.textKeyPress(evt);
     }//GEN-LAST:event_txtReferencePhoneKeyTyped
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel18MouseClicked
+    private void btnGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGoBackMouseClicked
+        LoginWindows login = new LoginWindows();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGoBackMouseClicked
+
+    private void btnClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMouseClicked
+        clean.getClean(PanelRegister);
+        cleanTwo.getClean(PanelRegister);
+    }//GEN-LAST:event_btnClearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -989,6 +1016,29 @@ public class RegisterWindows extends javax.swing.JFrame {
        
     }
     
-    
+    private void setCities() {
+        City cities = new City();
+        List<City> ciudades = cities.readCsvFile();
+        
+        // Limpiar el ComboBox antes de agregar nuevas ciudades
+        cmbCity.removeAllItems();
+        
+        // Agregar las ciudades al ComboBox
+        for (City ciu : ciudades) {
+            cmbCity.addItem(ciu.getCity());
+        }
+    }
+    private void setProvinces() {
+        Provinces p = new Provinces();
+        List<Provinces> pr = p.readCsvFile();
+        
+        // Limpiar el ComboBox antes de agregar nuevas ciudades
+        cmbProvince.removeAllItems();
+        
+        // Agregar las ciudades al ComboBox
+        for (Provinces provi : pr) {
+           cmbProvince.addItem(provi.getProvincies());
+        }
+    }
     
 }

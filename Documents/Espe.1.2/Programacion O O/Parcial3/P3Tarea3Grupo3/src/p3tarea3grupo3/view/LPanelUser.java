@@ -41,7 +41,6 @@ public class LPanelUser extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         lblUser = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         lblSubtitle = new javax.swing.JLabel();
@@ -57,7 +56,6 @@ public class LPanelUser extends javax.swing.JPanel {
         lblRecovery = new javax.swing.JLabel();
         btnRegister = new ComponentRoundJilmar.LabelRound();
         btnLogin = new ComponentRoundJilmar.LabelRound();
-        txtPIN = new javax.swing.JLabel();
         wallpaper = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,26 +65,22 @@ public class LPanelUser extends javax.swing.JPanel {
 
         jSeparator1.setBackground(new Color(0,0,0,0));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, 20));
-
-        jSeparator2.setBackground(new Color(0,0,0,0));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 100, 40));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 210, 20));
 
         lblUser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblUser.setForeground(new java.awt.Color(255, 255, 255));
         lblUser.setText("Usuario:");
-        jPanel1.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jPanel1.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 3, 40)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("BANCA VIRTUAL");
-        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+        jPanel1.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, -1));
 
         lblSubtitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblSubtitle.setForeground(new java.awt.Color(255, 255, 255));
         lblSubtitle.setText("Ingresa con tu usuario y contraseña");
-        jPanel1.add(lblSubtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jPanel1.add(lblSubtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
 
         pnlUser.setBackground(new java.awt.Color(255, 255, 255));
         pnlUser.setRoundBottomLeft(50);
@@ -95,18 +89,20 @@ public class LPanelUser extends javax.swing.JPanel {
         pnlUser.setRoundTopRight(50);
         pnlUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtUser.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtUser.setText("jigonzalez3");
         txtUser.setBorder(null);
-        pnlUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 6, 350, 28));
+        pnlUser.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 330, 28));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/user.png"))); // NOI18N
-        pnlUser.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        pnlUser.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
 
-        jPanel1.add(pnlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 460, 40));
+        jPanel1.add(pnlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 460, 50));
 
         lblPassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Contraseña:");
-        jPanel1.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        jPanel1.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
         pnlPassword.setBackground(new java.awt.Color(255, 255, 255));
         pnlPassword.setRoundBottomLeft(50);
@@ -115,11 +111,13 @@ public class LPanelUser extends javax.swing.JPanel {
         pnlPassword.setRoundTopRight(50);
         pnlPassword.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        txtPassword.setText("010302");
         txtPassword.setBorder(null);
-        pnlPassword.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 6, 350, 28));
+        pnlPassword.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 330, 28));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/password.png"))); // NOI18N
-        pnlPassword.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        pnlPassword.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
 
         lblVisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/visible1.png"))); // NOI18N
         lblVisible.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,7 +125,7 @@ public class LPanelUser extends javax.swing.JPanel {
                 lblVisibleMouseClicked(evt);
             }
         });
-        pnlPassword.add(lblVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        pnlPassword.add(lblVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 30));
 
         lblNotVisible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/notVisible1.png"))); // NOI18N
         lblNotVisible.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,20 +133,21 @@ public class LPanelUser extends javax.swing.JPanel {
                 lblNotVisibleMouseClicked(evt);
             }
         });
-        pnlPassword.add(lblNotVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
+        pnlPassword.add(lblNotVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 30));
 
-        jPanel1.add(pnlPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 460, 40));
+        jPanel1.add(pnlPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 460, 50));
 
         lblRecovery.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblRecovery.setForeground(new java.awt.Color(255, 255, 255));
         lblRecovery.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRecovery.setText("Olvido su usuario y/o contraseña?");
-        jPanel1.add(lblRecovery, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
+        jPanel1.add(lblRecovery, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
 
         btnRegister.setBackground(new java.awt.Color(0, 0, 0));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRegister.setText("Registrarse");
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegister.setMaximumSize(new java.awt.Dimension(69, 16));
         btnRegister.setMinimumSize(new java.awt.Dimension(69, 16));
         btnRegister.setPreferredSize(new java.awt.Dimension(69, 16));
@@ -167,6 +166,7 @@ public class LPanelUser extends javax.swing.JPanel {
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnLogin.setText("Ingresar");
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogin.setRoundBottomLeft(50);
         btnLogin.setRoundBottomRight(50);
         btnLogin.setRoundTopLeft(50);
@@ -177,11 +177,6 @@ public class LPanelUser extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 200, 60));
-
-        txtPIN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPIN.setForeground(new java.awt.Color(255, 255, 255));
-        txtPIN.setText("Ingrese con PIN");
-        jPanel1.add(txtPIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 670));
 
@@ -235,7 +230,6 @@ public class LPanelUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblNotVisible;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblRecovery;
@@ -245,7 +239,6 @@ public class LPanelUser extends javax.swing.JPanel {
     private javax.swing.JLabel lblVisible;
     private ComponentRoundJilmar.PanelRound pnlPassword;
     private ComponentRoundJilmar.PanelRound pnlUser;
-    private javax.swing.JLabel txtPIN;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     private javax.swing.JLabel wallpaper;

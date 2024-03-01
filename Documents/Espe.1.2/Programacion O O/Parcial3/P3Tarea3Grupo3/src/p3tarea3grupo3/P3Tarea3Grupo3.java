@@ -1,7 +1,7 @@
 
 package p3tarea3grupo3;
 
-import com.formdev.flatlaf.FlatLightLaf;
+//import com.formdev.flatlaf.FlatLightLaf;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import org.bson.Document;
@@ -21,7 +21,7 @@ public class P3Tarea3Grupo3 {
 
     public static void main(String[] args) {
       
-        FlatLightLaf.setup();
+        //FlatLightLaf.setup();
         SwingUtilities.invokeLater(()->{
             new LoginWindows();
         });

@@ -57,7 +57,6 @@ public class RPanelAccount extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         lblReturn = new javax.swing.JLabel();
         pnlInformation = new ComponentRoundJilmar.PanelRound();
-        jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -125,37 +124,31 @@ public class RPanelAccount extends javax.swing.JPanel {
         pnlInformation.setRoundTopRight(30);
         pnlInformation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setBackground(new java.awt.Color(51, 0, 153));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 0, 153));
-        jLabel7.setText("CAMILA MAYTE PERRAZO GUERRA");
-        pnlInformation.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 21, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Numero de Cuenta");
-        pnlInformation.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 130, -1, 30));
+        pnlInformation.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña");
-        pnlInformation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 305, -1, -1));
+        pnlInformation.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Saldo Inicial");
-        pnlInformation.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 75, -1, -1));
+        pnlInformation.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PIN");
-        pnlInformation.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 245, -1, -1));
+        pnlInformation.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Usuario");
-        pnlInformation.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 190, -1, -1));
+        pnlInformation.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         panelRound2.setBackground(new java.awt.Color(255, 255, 255));
         panelRound2.setPreferredSize(new java.awt.Dimension(48, 25));
@@ -188,7 +181,7 @@ public class RPanelAccount extends javax.swing.JPanel {
             .addComponent(txtPin)
         );
 
-        pnlInformation.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 245, 175, -1));
+        pnlInformation.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 175, -1));
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setPreferredSize(new java.awt.Dimension(48, 25));
@@ -221,7 +214,7 @@ public class RPanelAccount extends javax.swing.JPanel {
             .addComponent(txtPasword)
         );
 
-        pnlInformation.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 305, 175, -1));
+        pnlInformation.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 175, -1));
 
         lblNumberCta.setBackground(new java.awt.Color(255, 255, 255));
         lblNumberCta.setForeground(new java.awt.Color(51, 0, 102));
@@ -232,7 +225,7 @@ public class RPanelAccount extends javax.swing.JPanel {
         lblNumberCta.setRoundBottomRight(30);
         lblNumberCta.setRoundTopLeft(30);
         lblNumberCta.setRoundTopRight(30);
-        pnlInformation.add(lblNumberCta, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 133, 175, -1));
+        pnlInformation.add(lblNumberCta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 175, -1));
 
         lblUser.setBackground(new java.awt.Color(255, 255, 255));
         lblUser.setForeground(new java.awt.Color(51, 0, 102));
@@ -246,7 +239,7 @@ public class RPanelAccount extends javax.swing.JPanel {
         lblUser.setRoundBottomRight(30);
         lblUser.setRoundTopLeft(30);
         lblUser.setRoundTopRight(30);
-        pnlInformation.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 190, 175, 25));
+        pnlInformation.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 175, 25));
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
         panelRound1.setRoundBottomLeft(30);
@@ -265,9 +258,9 @@ public class RPanelAccount extends javax.swing.JPanel {
         jLabel8.setText("0.00");
         panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 40, 25));
 
-        pnlInformation.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 170, 25));
+        pnlInformation.add(panelRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 170, 25));
 
-        pnlOne.add(pnlInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 420, 360));
+        pnlOne.add(pnlInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 420, 310));
 
         btnEnter.setBackground(new java.awt.Color(0, 0, 0));
         btnEnter.setForeground(new java.awt.Color(255, 255, 255));
@@ -356,7 +349,6 @@ public class RPanelAccount extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lbFound;

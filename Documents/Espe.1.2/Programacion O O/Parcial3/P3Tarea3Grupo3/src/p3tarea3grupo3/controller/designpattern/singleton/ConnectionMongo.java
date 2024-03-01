@@ -8,37 +8,42 @@ import com.mongodb.client.MongoDatabase;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
+// Clase que implementa el patron Singleton para manejar la conexion a MongoDB
 public class ConnectionMongo {
     
-    public static ConnectionMongo connection;
-    private MongoClient mongo;
-    private MongoDatabase dataBase;
-    MongoCollection<Document> collection;
-    String server = "localhost";
-    int puerto = 27017;
+    public static ConnectionMongo connection; // Instancia unica de la conexión
+    private MongoClient mongo; // Cliente MongoDB
+    private MongoDatabase dataBase; // Base de datos MongoDB
+    MongoCollection<Document> collection; // Coleccion MongoDB
+    String server = "localhost"; // Servidor MongoDB
+    int puerto = 27017; // Puerto MongoDB
     
+    // Constructor privado para evitar la creacion de instancias directas
     private ConnectionMongo(){
-       this.mongo = createConnection();
-       this.dataBase = mongo.getDatabase("P3Tarea3Grupo3");
-       this.collection = dataBase.getCollection("Account");
+       this.mongo = createConnection(); // Establece la conexion MongoDB
+       this.dataBase = mongo.getDatabase("P3Tarea3Grupo3"); // Obtiene la base de datos
+       this.collection = dataBase.getCollection("Account"); // Obtiene la coleccion
     }
     
+    // Metodo privado para crear la conexion MongoDB
     private MongoClient createConnection(){
         try{
-            mongo = new MongoClient(server, puerto);
+            mongo = new MongoClient(server, puerto); // Crea la conexion
         }catch(MongoException e){
-            JOptionPane.showMessageDialog(null, "Error al crear la conexion", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al crear la conexión", "ERROR", JOptionPane.ERROR_MESSAGE); // Manejo de excepciones
         }
-        return mongo;
+        return mongo; // Devuelve el cliente MongoDB
     }
 
+    // Metodo estatico para obtener la instancia única de la conexion y aplicamos el patron de diseño creacional Singleton
     public static ConnectionMongo connect(){
         if(connection == null){
-            connection = new ConnectionMongo();    
+            connection = new ConnectionMongo(); // Si no existe una instancia, se crea una nueva
         }
-        return connection;
+        return connection; // Devuelve la instancia existente
     }
     
+    // Metodo para obtener la colección MongoDB
     public MongoCollection<Document> getCollection() {
         return collection;
     }

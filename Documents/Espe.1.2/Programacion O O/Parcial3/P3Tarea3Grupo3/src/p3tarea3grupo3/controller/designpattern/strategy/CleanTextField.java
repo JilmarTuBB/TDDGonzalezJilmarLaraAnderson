@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CleanTextField implements CleanComponent{
+    // Metodo para limpiar los campos de texto de un panel
 
     @Override
     public void cleanField(JPanel panel) {

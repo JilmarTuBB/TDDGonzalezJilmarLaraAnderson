@@ -6,7 +6,5 @@ import org.bson.Document;
 public class CurrentAccount {
 
     
-
-
-   
+  
 }

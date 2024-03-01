@@ -3,8 +3,9 @@ package p3tarea3grupo3.controller;
 
 import org.bson.Document;
 
-public class Client {
+public class Client { //Clase Clietn representa un cliente del sistema Bancario
 
+    //Atributos 
     private String name;
     private String lastName;
     private String identification;
@@ -21,10 +22,13 @@ public class Client {
     private String referenceName;
     private long referencePhone;
 
+    //Constructores
     public Client() {
     }
+    //Constructor que acepta todos los atributos del cliente como parametros y los inicializa
 
-    public Client(String name, String lastName, String identification, String code, String birthDate, String status, long phone, String address, String occupation, String email, String nationality, String province, String city, String referenceName, long referencePhone) {
+    public Client(String name, String lastName, String identification, String code, String birthDate, String status, long phone, 
+        String address, String occupation, String email, String nationality, String province, String city, String referenceName, long referencePhone) {
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
@@ -42,7 +46,7 @@ public class Client {
         this.referencePhone = referencePhone;
     }
 
-
+//Metodos Getters and Setters
     public long getReferencePhone() {
         return referencePhone;
     }
@@ -163,7 +167,10 @@ public class Client {
         this.referenceName = referenceName;
     }
     
-    
+    /*
+    Este metodo toma un objeto de tipo Client como parametro y devuelve un documento de MongoDBque representa al cliente. 
+    Este metodo es utilizado para convertir objetos de tipo Client en documentos MongoDB que pueden ser almacenados en una base de datos MongoDB.
+    */
     
     public Document getDocument(Client client){
         Document doc = new Document();
@@ -185,7 +192,11 @@ public class Client {
             
         return doc;
     }
-    
+    /*
+    Este metodo toma un documento de MongoDB como parametro y devuelve un objeto de tipo Client. 
+    Extrae los valores de los campos del documento y crea un nuevo objeto Client con estos valores. 
+    Este metodo es utilizado para convertir documentos MongoDB en objetos de tipo Client
+    */
     public Client getObject(Document doc) {
             String name = doc.getString("name");
             String lastName = doc.getString("lastName");

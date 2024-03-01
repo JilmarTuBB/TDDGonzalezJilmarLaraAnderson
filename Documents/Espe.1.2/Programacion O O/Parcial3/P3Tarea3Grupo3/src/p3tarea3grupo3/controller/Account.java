@@ -1,10 +1,14 @@
 
 package p3tarea3grupo3.controller;
 
-import org.bson.Document;
+import org.bson.Document; //Libreria
 
-public class Account implements CreateAccount {
+//Implementa la Interface CreateAccount 
+public class Account implements CreateAccount { //Clase cuenta del Sistema Bancario
     
+    //Atributos privados 
+    
+    //Encapsula la información relacionada con una cuenta bancaria
     private int id;
     private String accountNumber;
     private String titular;
@@ -12,8 +16,9 @@ public class Account implements CreateAccount {
     private String password;
     private String pin;
     private double balance;
-    private Client client;
-
+    private Client client; //Objeto de tipo Client que representa el cliente asociado a la cuenta
+    
+    //Constructor con parametros inicializados
     public Account(int id, String accountNumber, String titular, String user, String password, String pin, double balance, Client client) {
         this.id = id;
         this.accountNumber = accountNumber;
@@ -24,11 +29,18 @@ public class Account implements CreateAccount {
         this.balance = balance;
         this.client = client;
     }
-
+    //Constructor vacio utilizado para instanciar objetos sin establecer valores iniciales
     public Account() {
     }
+    
+    //Metodos
 
-    @Override
+    @Override //Sobreescritura de metodos
+    
+    /*
+    Este metodo recibe un objeto de tipo Account y devuelve un documento de MongoDB (org.bson.Document)
+    Este documento contiene todos los atributos de la cuenta, asi como el documento de cliente obtenido mediante el método getDocument() de la clase Client.
+    */
     public Document getDocument(Account account) {
         Client cli = new Client();
         Document document = new Document();
@@ -44,7 +56,12 @@ public class Account implements CreateAccount {
         return document;
     }
 
-    @Override
+    @Override //Sobreescritura de metodos
+    
+    /*
+    Este método recibe un documento de MongoDB y devuelve un objeto de tipo Account. Extrae los valores de los campos del documento y crea un nuevo objeto Account. 
+    Ademas, crea un objeto Client utilizando el método getObject() de la clase Client para obtener el cliente asociado a la cuenta.
+    */
      public Account getObject(Document doc) {
         Client client = new Client();
         int id = doc.getInteger("id");
@@ -58,6 +75,7 @@ public class Account implements CreateAccount {
 
         return new Account(id, accountNumber, titular, user, password, pin, balance, c) {};
     }
+    //Metodos Getters and Setters de la clase Account 
 
     public int getId() {
         return id;

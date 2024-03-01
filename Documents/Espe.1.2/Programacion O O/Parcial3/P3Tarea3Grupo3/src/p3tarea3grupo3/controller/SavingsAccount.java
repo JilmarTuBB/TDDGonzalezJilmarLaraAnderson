@@ -3,16 +3,15 @@ package p3tarea3grupo3.controller;
 
 import org.bson.Document;
 
-public class SavingsAccount extends Account{
-
+public class SavingsAccount extends Account{ //extiende o hereda la clase Account
+    //Atributos
     Client client;
     double interest;
-
+    //Constructor
     public SavingsAccount() {
         client = new Client();
     }
-    
-    
+    //Datos de la cuenta bancaria   
     @Override
     public Document getDocument(Account account) {
         Document document = new Document();
@@ -25,7 +24,5 @@ public class SavingsAccount extends Account{
             document.put("client", client.getDocument(account.getClient()));
             
         return document;
-    }
-    
-    
+    }   
 }

@@ -141,6 +141,11 @@ public class MPanelTransfer extends javax.swing.JPanel {
         txtDiner.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDiner.setText("0.00");
         txtDiner.setBorder(null);
+        txtDiner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDinerMouseClicked(evt);
+            }
+        });
         txtDiner.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDinerActionPerformed(evt);
@@ -311,6 +316,10 @@ public class MPanelTransfer extends javax.swing.JPanel {
         tranfer();
     }//GEN-LAST:event_btnConfirmTransferMouseClicked
 
+    private void txtDinerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDinerMouseClicked
+        txtDiner.setText("");
+    }//GEN-LAST:event_txtDinerMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ComponentRoundJilmar.PanelRound btnConfirmTransfer;
@@ -367,21 +376,32 @@ public class MPanelTransfer extends javax.swing.JPanel {
         Double balance = account.getBalance();
         Double newBalance = Double.parseDouble(txtDiner.getText());
     
-        if(txtNumberCount.getText().isEmpty() || nameDestination.equals("Usuario no Existe") || nameDestination.equals("Usuario no Existe")){
+        if(txtNumberCount.getText().isEmpty() || nameDestination.equals("Usuario no Existe")){
             JOptionPane.showMessageDialog(null, "El numero de cuenta no puede estar vacio", "ERROR", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        Double total = balance - newBalance;
+        if(txtDiner.getText().equals("0.00") || txtDiner.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puedes tranferir 0.00 $", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(newBalance > account.getBalance()) {
+            JOptionPane.showMessageDialog(null, "Tu saldo es menor al monto que quieres transferiri", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
         
         //Valor a transferir
         searchAccount.setBalance(newBalance);       
         aplication.applicationn(searchAccount);
         
+        
         //Valor a restar de la cuenta actual
-        account.setBalance(total);
+        account.setBalance(newBalance);
         subtract.applicationn(account);
         
+        // Volver al menuPrincipal
         windows.setDates();
         windows.showPanel(new MPanelOptions(windows,account));
         

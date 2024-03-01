@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package p3tarea3grupo3.view;
 
 import java.awt.Color;
@@ -17,7 +14,6 @@ public class MPanelOptions extends javax.swing.JPanel {
     
     public MPanelOptions(MainWindows windows, Account account) {
         initComponents();
-        System.out.println("Entro en Optiones " + account.getTitular());
         this.windows = windows;
         this.account = account;
     }
@@ -66,6 +62,9 @@ public class MPanelOptions extends javax.swing.JPanel {
         btnUpdataData.setRoundTopLeft(50);
         btnUpdataData.setRoundTopRight(50);
         btnUpdataData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdataDataMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnUpdataDataMouseEntered(evt);
             }
@@ -288,7 +287,7 @@ public class MPanelOptions extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTransferMouseClicked
 
     private void btnWithDrawalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnWithDrawalMouseClicked
-        windows.showPanel(new Retreat(windows, account));
+        windows.showPanel(new MPanelRetreat(windows, account));
     }//GEN-LAST:event_btnWithDrawalMouseClicked
 
     private void btnQueryMovementsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQueryMovementsMouseClicked
@@ -314,6 +313,10 @@ public class MPanelOptions extends javax.swing.JPanel {
             return;
         }
     }//GEN-LAST:event_labelRound1MouseClicked
+
+    private void btnUpdataDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdataDataMouseClicked
+        windows.showPanel(new MPanelUpdateData(windows,account));
+    }//GEN-LAST:event_btnUpdataDataMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

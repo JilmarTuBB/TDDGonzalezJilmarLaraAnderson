@@ -4,27 +4,22 @@ package p3tarea3grupo3.view;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import p3tarea3grupo3.controller.Account;
-import p3tarea3grupo3.controller.ListClient;
-import p3tarea3grupo3.controller.designpattern.factorymethod.Deposit;
 import p3tarea3grupo3.controller.designpattern.factorymethod.Transaction;
 import p3tarea3grupo3.controller.designpattern.factorymethod.Withdrawal;
 
-/**
- *
- * @author EFRAIN
- */
-public class Retreat extends javax.swing.JPanel {
+
+public class MPanelRetreat extends javax.swing.JPanel {
 
     MainWindows windows;
     Account account;
     Transaction aplication;
     
-    public Retreat() {
+    public MPanelRetreat() {
         initComponents();
         
     }
     
-    public Retreat(MainWindows windows, Account account) {
+    public MPanelRetreat(MainWindows windows, Account account) {
         initComponents();
         this.windows = windows;
         this.account = account;
@@ -71,6 +66,11 @@ public class Retreat extends javax.swing.JPanel {
         lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/nextOne.png"))); // NOI18N
 
         lbReturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/return.png"))); // NOI18N
+        lbReturn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbReturnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlTitleLayout = new javax.swing.GroupLayout(pnlTitle);
         pnlTitle.setLayout(pnlTitleLayout);
@@ -234,6 +234,10 @@ public class Retreat extends javax.swing.JPanel {
         }
         setRetrat();
     }//GEN-LAST:event_btnConfirmRetiroMouseClicked
+
+    private void lbReturnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbReturnMouseClicked
+        windows.showPanel(new MPanelOptions(windows, account));
+    }//GEN-LAST:event_lbReturnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

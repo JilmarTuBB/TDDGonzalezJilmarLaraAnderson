@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package p3tarea3grupo3.controller;
 
 import com.opencsv.CSVReader;
@@ -14,14 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author EFRAIN
- */
-public class Provinces {
-    
-    private String provincies;
 
+public class Provinces {//Clase Provincia - provincias del Ecuador que se cangan en registro en un ComboBox
+    //Atributo
+    private String provincies;
+    //Constructor
     public Provinces(String provincies) {
         this.provincies = provincies;
     }
@@ -29,7 +23,7 @@ public class Provinces {
     public Provinces(){
         
     }
-
+    //Metodos Get y set
     public String getProvincies() {
         return provincies;
     }
@@ -37,6 +31,7 @@ public class Provinces {
     public void setProvincies(String provincies) {
         this.provincies = provincies;
     }
+    //Creacion del archivo csv en donde se va a guardar una lista de provincias de ciudades
     public void createCsvFile(List<Provinces> pro) {
         boolean fileExists = !new File("Provinces.csv").exists();
         try (CSVWriter writer = new CSVWriter(new FileWriter("Provinces.csv", true))) {
@@ -52,7 +47,7 @@ public class Provinces {
             e.printStackTrace();
         }
     }
-
+    //Lectura del archivo csv
     public List<Provinces> readCsvFile() {
         List<Provinces> provi = new ArrayList<>();
         File archivo = new File("Provinces.csv");
@@ -75,9 +70,6 @@ public class Provinces {
             ex.printStackTrace();
         }
 
-        return provi;
-    }
-
-
-    
+        return provi;//retorna una lista de Provincias
+    }    
 }

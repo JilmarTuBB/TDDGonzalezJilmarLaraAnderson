@@ -11,6 +11,8 @@ public class Clean {
     
     private CleanComponent cleanComponet;
 
+    // Constructor que toma una estrategia de limpieza como parametro
+
     public Clean(CleanComponent cleanComponet) {
         this.cleanComponet = cleanComponet;
     }

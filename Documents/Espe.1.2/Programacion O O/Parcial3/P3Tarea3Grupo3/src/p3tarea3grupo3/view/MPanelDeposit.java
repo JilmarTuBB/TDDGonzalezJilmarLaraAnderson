@@ -47,10 +47,6 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         panelRound4 = new ComponentRoundJilmar.PanelRound();
         jTextField3 = new javax.swing.JTextField();
-        panelRound5 = new ComponentRoundJilmar.PanelRound();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         btnConfirmTransfer = new ComponentRoundJilmar.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -65,12 +61,12 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ingrese el monto a depositar");
-        pnlOne.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        pnlOne.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ingrese una Descripción");
-        pnlOne.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
+        pnlOne.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
         panelRound1.setBackground(new Color(255, 255, 255, 123));
         panelRound1.setRoundBottomLeft(30);
@@ -86,6 +82,11 @@ public class MPanelDeposit extends javax.swing.JPanel {
         panelRound1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 281, 54));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/p3tarea3grupo3/image/return.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
         panelRound1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, -1, 60));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -118,7 +119,7 @@ public class MPanelDeposit extends javax.swing.JPanel {
         jLabel4.setText("$");
         panelRound2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 27, 27));
 
-        pnlOne.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 390, 70));
+        pnlOne.add(panelRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 390, 70));
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setPreferredSize(new java.awt.Dimension(320, 54));
@@ -136,62 +137,17 @@ public class MPanelDeposit extends javax.swing.JPanel {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 380, 50));
-
-        panelRound5.setBackground(new Color(255, 255, 255, 123));
-        panelRound5.setRoundBottomLeft(30);
-        panelRound5.setRoundBottomRight(30);
-        panelRound5.setRoundTopLeft(30);
-        panelRound5.setRoundTopRight(30);
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Nro. 2200440110 ");
-
-        jLabel7.setBackground(new java.awt.Color(51, 0, 153));
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 0, 153));
-        jLabel7.setText("CAMILA MAYTE PERRAZO GUERRA");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Para");
-
-        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
-        panelRound5.setLayout(panelRound5Layout);
-        panelRound5Layout.setHorizontalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-        panelRound5Layout.setVerticalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnlOne.add(panelRound5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 380, -1));
+        pnlOne.add(panelRound4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 380, 100));
 
         btnConfirmTransfer.setBackground(new java.awt.Color(51, 0, 102));
         btnConfirmTransfer.setPreferredSize(new java.awt.Dimension(100, 54));
@@ -267,25 +223,25 @@ public class MPanelDeposit extends javax.swing.JPanel {
         deposit();    
     }//GEN-LAST:event_jLabel12MouseClicked
 
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        windows.showPanel(new MPanelOptions(windows, account));
+    }//GEN-LAST:event_jLabel8MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ComponentRoundJilmar.PanelRound btnConfirmTransfer;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField3;
     private ComponentRoundJilmar.PanelRound panelRound1;
     private ComponentRoundJilmar.PanelRound panelRound2;
     private ComponentRoundJilmar.PanelRound panelRound4;
-    private ComponentRoundJilmar.PanelRound panelRound5;
     private javax.swing.JPanel pnlOne;
     private javax.swing.JTextField txtDiner;
     // End of variables declaration//GEN-END:variables

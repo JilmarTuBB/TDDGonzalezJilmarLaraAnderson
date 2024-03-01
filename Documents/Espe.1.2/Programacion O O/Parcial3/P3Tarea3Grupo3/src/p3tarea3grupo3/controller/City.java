@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package p3tarea3grupo3.controller;
 
 import com.opencsv.CSVReader;
@@ -16,21 +13,19 @@ import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author EFRAIN
- */
-public class City {
-        private String city;
 
+public class City { //Clase Ciudad - ciudades del Ecuador que se cangan en registro en un ComboBox
+    //Atributo
+    private String city;
+    //Constructor
     public City(String city) {
         this.city = city;
     }
-
+   //Constructor vacion
    public City(){
        
    } 
-
+    //Metodo get y set de City
     public String getCity() {
         return city;
     }
@@ -38,14 +33,15 @@ public class City {
     public void setCity(String city) {
         this.city = city;
     }
-    public void createCsvFile(List<City> ciudades) {
+    //Creacion de ARCHIVO CSV 
+    public void createCsvFile(List<City> ciudades) { //Lista de ciudades como Argumento
         boolean fileExists = !new File("Cities.csv").exists();
-        try (CSVWriter writer = new CSVWriter(new FileWriter("Cities.csv", true))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter("Cities.csv", true))) {//Escribir en el archivo csv
             if (fileExists) {
                 String[] header = {"Nombre"};
                 writer.writeNext(header);
             }
-            for (City ciudad : ciudades) {
+            for (City ciudad : ciudades) { //iterador en la lista de ciudades
                 String[] data = {ciudad.getCity()};
                 writer.writeNext(data);
             }
@@ -53,7 +49,7 @@ public class City {
             e.printStackTrace();
         }
     }
-
+    //Lectura del archivo csv para cargar en el ComboBox
     public List<City> readCsvFile() {
         List<City> ciudades = new ArrayList<>();
         File archivo = new File("Cities.csv");
@@ -76,7 +72,7 @@ public class City {
             ex.printStackTrace();
         }
 
-        return ciudades;
+        return ciudades; //devuelve la lista de ciudades
     }
 
 }

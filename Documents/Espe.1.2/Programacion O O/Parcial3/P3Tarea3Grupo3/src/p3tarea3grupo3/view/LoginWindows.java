@@ -228,6 +228,8 @@ public class LoginWindows extends javax.swing.JFrame {
     private javax.swing.JLabel lblIcon;
     // End of variables declaration//GEN-END:variables
 
+    //Metodo para establecer los paneles que estan por fuera de JFrame
+    
     public void showPanel(JPanel p){
         p.setSize(660, 670);
         p.setLocation(0, 0);       

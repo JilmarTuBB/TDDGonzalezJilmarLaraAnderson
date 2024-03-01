@@ -5,6 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 public class CleanComboBox implements CleanComponent{
+    // Metodo para limpiar los combos box de un panel
 
     @Override
     public void cleanField(JPanel panel) {
